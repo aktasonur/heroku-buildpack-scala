@@ -20,7 +20,7 @@ EOF
 if is_play $BUILD_DIR && [ ! -f $BUILD_DIR/Procfile ] ; then
   echo "default_process_types:"
   if uses_universal_packaging $BUILD_DIR; then
-    echo "  $(universal_packaging_default_web_proc $BUILD_DIR)"
+    echo "  web: target/universal/stage/bin/vebuno-dev -Dhttp.port=\$PORT \$JAVA_OPTS""
   else
     echo "  web: target/start -Dhttp.port=\$PORT \$JAVA_OPTS"
   fi
